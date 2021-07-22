@@ -1,11 +1,18 @@
-#include<stdio.h>
-#include<iostream>
+#include <iostream>
+#include <stack>
+#include <queue>
+#include <map>
+#include <set>
+#include <vector>
+#include <algorithm>
+#include <string>
 
 typedef struct Node
 {
     int key;
     struct Node *lchild, *rchild;
 } Node;
+
 Node *getNewNode(int key)
 {
     Node *p = (Node *)
@@ -24,11 +31,12 @@ Node *random_insert(Node *root, int key)
 
     if (rand() % 2)
     {
-        root->lchild = random_insert(root->lchild,
-                                     key);
+        root->lchild = random_insert(root->lchild, key);
     }
-    ,
-        else { root->rchild = random_insert(root->rchild, key); }
+    else
+    {
+        root->rchild = random_insert(root->rchild, key);
+    }
 
     return root;
 }
@@ -68,7 +76,7 @@ int main(int argc, char **argv)
     {
         root = random_insert(root, i);
     }
-    pre_order(root); 
+    pre_order(root);
     printf("\n");
     in_order(root);
     printf("\n");
